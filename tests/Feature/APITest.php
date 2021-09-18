@@ -5,7 +5,7 @@ namespace Tests\Feature;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
-class ExampleTest extends TestCase
+class APITest extends TestCase
 {
 
     public function test_create(){
@@ -42,8 +42,8 @@ class ExampleTest extends TestCase
     $response->assertJsonFragment(['target' => 'https://laravel.com']);
     $response->assertJsonFragment(['password' => '123456']);
     $link = $response->getData()->link;
-    $response->assertJsonFragment(['https://laravel.com?password=123456']);
     $response = $this->get($link);
+    $response->assertJsonFragment(['https://laravel.com?password=123456']);
     $response->assertStatus(200);
   }
 }

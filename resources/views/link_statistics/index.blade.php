@@ -9,7 +9,7 @@
                 </div>
                 <div class="col-sm-6">
                     <a class="btn btn-primary float-right"
-                       href="{{ route('linkStatistics.create') }}">
+                       href="{{ route('linkstatistics.create') }}">
                         Add New
                     </a>
                 </div>
@@ -29,7 +29,7 @@
 
                 <div class="card-footer clearfix">
                     <div class="float-right">
-                        @include('adminlte-templates::common.paginate', ['records' => $linkStatistics])
+                        @include('adminlte-templates::common.paginate', ['records' => $linkstatistics])
                     </div>
                 </div>
             </div>

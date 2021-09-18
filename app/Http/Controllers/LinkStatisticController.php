@@ -29,10 +29,10 @@ class LinkStatisticController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $linkStatistics = $this->linkStatisticRepository->paginate(10);
+        $linkstatistics = $this->linkStatisticRepository->paginate(10);
 
         return view('link_statistics.index')
-            ->with('linkStatistics', $linkStatistics);
+            ->with('linkstatistics', $linkstatistics);
     }
 
     /**
@@ -60,7 +60,7 @@ class LinkStatisticController extends AppBaseController
 
         Flash::success('Link Statistic saved successfully.');
 
-        return redirect(route('linkStatistics.index'));
+        return redirect(route('linkstatistics.index'));
     }
 
     /**
@@ -77,7 +77,7 @@ class LinkStatisticController extends AppBaseController
         if (empty($linkStatistic)) {
             Flash::error('Link Statistic not found');
 
-            return redirect(route('linkStatistics.index'));
+            return redirect(route('linkstatistics.index'));
         }
 
         return view('link_statistics.show')->with('linkStatistic', $linkStatistic);
@@ -97,7 +97,7 @@ class LinkStatisticController extends AppBaseController
         if (empty($linkStatistic)) {
             Flash::error('Link Statistic not found');
 
-            return redirect(route('linkStatistics.index'));
+            return redirect(route('linkstatistics.index'));
         }
 
         return view('link_statistics.edit')->with('linkStatistic', $linkStatistic);
@@ -118,14 +118,14 @@ class LinkStatisticController extends AppBaseController
         if (empty($linkStatistic)) {
             Flash::error('Link Statistic not found');
 
-            return redirect(route('linkStatistics.index'));
+            return redirect(route('linkstatistics.index'));
         }
 
         $linkStatistic = $this->linkStatisticRepository->update($request->all(), $id);
 
         Flash::success('Link Statistic updated successfully.');
 
-        return redirect(route('linkStatistics.index'));
+        return redirect(route('linkstatistics.index'));
     }
 
     /**
@@ -144,13 +144,13 @@ class LinkStatisticController extends AppBaseController
         if (empty($linkStatistic)) {
             Flash::error('Link Statistic not found');
 
-            return redirect(route('linkStatistics.index'));
+            return redirect(route('linkstatistics.index'));
         }
 
         $this->linkStatisticRepository->delete($id);
 
         Flash::success('Link Statistic deleted successfully.');
 
-        return redirect(route('linkStatistics.index'));
+        return redirect(route('linkstatistics.index'));
     }
 }

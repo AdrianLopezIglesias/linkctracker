@@ -13,7 +13,21 @@ Actualizar .env con datos de BD del usuario
 php artisan migrate
 php artisan serve
 ```
-Si se quiere que la UI de las rutas para ver las cargas correr: 
+
+Rutas Generales
+/links : muestra un panel para ver todos los Links creados
+/linkstatistics : muestra todos los usos de los links y la IP desde la que se accedio
+
+Rutas API
+post('l/create') : Parametro obligatorio una string para URL, Parametro opcional: expiration_date (fecha) y password (string)
+get('l/{url}') devuelve el target_url
+get('e/{url}') devuelve cantidad veces link utilizado
+put('l/{url}') anula un link
+
+Correr test
 ```
-npm i
+cd linkctracker
+php artisan test
 ```
+El archivo del test está en 'tests/Features/APITest.php' 
+

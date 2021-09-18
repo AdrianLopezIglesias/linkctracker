@@ -17,7 +17,7 @@
 
         <div class="card">
 
-            {!! Form::model($linkStatistic, ['route' => ['linkStatistics.update', $linkStatistic->id], 'method' => 'patch']) !!}
+            {!! Form::model($linkStatistic, ['route' => ['linkstatistics.update', $linkStatistic->id], 'method' => 'patch']) !!}
 
             <div class="card-body">
                 <div class="row">
@@ -27,7 +27,7 @@
 
             <div class="card-footer">
                 {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
-                <a href="{{ route('linkStatistics.index') }}" class="btn btn-default">Cancel</a>
+                <a href="{{ route('linkstatistics.index') }}" class="btn btn-default">Cancel</a>
             </div>
 
             {!! Form::close() !!}

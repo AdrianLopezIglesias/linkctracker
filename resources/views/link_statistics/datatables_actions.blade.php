@@ -1,9 +1,9 @@
-{!! Form::open(['route' => ['linkStatistics.destroy', $id], 'method' => 'delete']) !!}
+{!! Form::open(['route' => ['linkstatistics.destroy', $id], 'method' => 'delete']) !!}
 <div class='btn-group'>
-    <a href="{{ route('linkStatistics.show', $id) }}" class='btn btn-default btn-xs'>
+    <a href="{{ route('linkstatistics.show', $id) }}" class='btn btn-default btn-xs'>
         <i class="fa fa-eye"></i>
     </a>
-    <a href="{{ route('linkStatistics.edit', $id) }}" class='btn btn-default btn-xs'>
+    <a href="{{ route('linkstatistics.edit', $id) }}" class='btn btn-default btn-xs'>
         <i class="fa fa-edit"></i>
     </a>
     {!! Form::button('<i class="fa fa-trash"></i>', [
