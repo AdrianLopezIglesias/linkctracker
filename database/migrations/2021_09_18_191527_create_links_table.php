@@ -19,8 +19,8 @@ class CreateLinksTable extends Migration
             $table->longText('original');
             $table->longText('masked');
             $table->longText('valid');
-            $table->longText('password');
-            $table->date('expiration_date');
+            $table->longText('password')->nullable();;
+            $table->date('expiration_date')->nullable();;
             $table->timestamps();
         });
     }

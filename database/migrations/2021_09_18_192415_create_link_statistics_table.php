@@ -17,8 +17,8 @@ class CreateLinkStatisticsTable extends Migration
         Schema::create('link_statistics', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('link_id');
-            $table->longText('user_ip');
-            $table->integer('user_id');
+            $table->longText('user_ip')->nullable();;
+            $table->integer('user_id')->nullable();;
             $table->timestamps();
         });
     }
