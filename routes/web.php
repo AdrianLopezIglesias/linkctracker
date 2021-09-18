@@ -34,3 +34,7 @@ Route::post(
 )->name('io_generator_builder_generate_from_file');
 
 Route::resource('links', App\Http\Controllers\LinkController::class);
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
