@@ -58,8 +58,8 @@ class Link extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      **/
-    public function linkStatistic()
+    public function statistics()
     {
-        return $this->hasOne(\App\Models\LinkStatistic::class);
+        return $this->hasMany(\App\Models\LinkStatistic::class);
     }
 }
