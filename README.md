@@ -31,3 +31,31 @@ php artisan test
 ```
 El archivo del test está en 'tests/Features/APITest.php' 
 
+# Errores de instalación comunes
+Si al dar `php artisan serve` aparece el error `HP Warning:  Unknown: failed to 
+open stream: No such file or directory in Unknown on line 0 ` es por que el antivirus bloqueo el archivo `server.php`. Hay que o sacarlo de cuarentena o crearlo manual. Si al intentar crearlo windows dice que necesita permisos de administrador, con solo cambiarle el nombre a la carpeta yo pude operar normal.
+```
+server.php
+<?php
+
+/**
+ * Laravel - A PHP Framework For Web Artisans
+ *
+ * @package  Laravel
+ * @author   Taylor Otwell <taylor@laravel.com>
+ */
+
+$uri = urldecode(
+    parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH)
+);
+
+// This file allows us to emulate Apache's "mod_rewrite" functionality from the
+// built-in PHP web server. This provides a convenient way to test a Laravel
+// application without having installed a "real" web server software here.
+if ($uri !== '/' && file_exists(__DIR__.'/public'.$uri)) {
+    return false;
+}
+
+require_once __DIR__.'/public/index.php';
+
+```
