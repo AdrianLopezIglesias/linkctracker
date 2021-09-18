@@ -1,4 +1,7 @@
 # URL Ofuscator
+## Documentación de desarrollo
+https://special-grouse-217.notion.site/Challenge-TerapiaMia-Link-Tracker-0a677833f6d541c2b89669368447bf27
+
 ## Instalacion
 Tener PHP y MySQl instalado. Recomiendo usar XAMPP: https://www.apachefriends.org/es/download.html
 Tener Composer instalado (dependency manager de PHP): https://getcomposer.org/download/
