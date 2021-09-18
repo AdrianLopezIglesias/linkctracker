@@ -11,7 +11,6 @@ use App\Models\Link;
 use App\Models\LinkStatistic;
 use App\Helpers\TokenGenerator;
 use Carbon\Carbon;
-
 /**
  * Class LinkController
  * @package App\Http\Controllers\API
@@ -39,6 +38,9 @@ class LinkAPIController extends AppBaseController {
       if ($link->expiration_date) {
         $response['expiration_date'] = $link->expiration_date;
       }
+      if ($link->password) {
+        $response['password'] = $link->password;
+      }
       return ($response);
     }
     return "empty url";
@@ -46,12 +48,18 @@ class LinkAPIController extends AppBaseController {
 
   public function redirect($url, Request $request) {
     $link = Link::where('masked', $url)->get()->last();
-    if ($link->valid && $link->expiration_date >= (Carbon::now())->toDateTimeString()) {
+    if($link->expiration_date && $link->expiration_date <= Carbon::now()){
+        abort(404);
+    }
+    if ($link->valid ) {
       $statistic = new LinkStatistic;
       $statistic->user_ip = $request->ip();
       $statistic->link_id = $link->id;
       $statistic->save();      
-      return $link->original;
+      if($link->password){
+        return Response::json($link->original ."?password=".$link->password);
+      }
+      return Response::json($link->original);
     }
     abort(404);
   }
