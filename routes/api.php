@@ -19,7 +19,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 
-Route::resource('links', App\Http\Controllers\API\LinkAPIController::class);
+Route::get('l/create', [App\Http\Controllers\API\LinkAPIController::class, 'create']);
 
 
 Route::resource('link_statistics', App\Http\Controllers\API\LinkStatisticAPIController::class);

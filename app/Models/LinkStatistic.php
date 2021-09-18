@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 /**
  * Class LinkStatistic
  * @package App\Models
- * @version September 18, 2021, 7:24 pm UTC
+ * @version September 18, 2021, 7:25 pm UTC
  *
  * @property integer $link_id
  * @property string $user_ip

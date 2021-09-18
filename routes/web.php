@@ -40,4 +40,6 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
-Route::resource('linkStatistics', App\Http\Controllers\LinkStatisticController::class);
+
+
+Route::resource('linkstatistics', App\Http\Controllers\LinkStatisticController::class);

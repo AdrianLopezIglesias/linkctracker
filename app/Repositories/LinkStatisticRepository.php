@@ -8,7 +8,7 @@ use App\Repositories\BaseRepository;
 /**
  * Class LinkStatisticRepository
  * @package App\Repositories
- * @version September 18, 2021, 7:24 pm UTC
+ * @version September 18, 2021, 7:25 pm UTC
 */
 
 class LinkStatisticRepository extends BaseRepository

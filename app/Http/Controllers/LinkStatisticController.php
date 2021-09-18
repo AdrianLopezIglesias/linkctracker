@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\DataTables\LinkStatisticDataTable;
-use App\Http\Requests;
 use App\Http\Requests\CreateLinkStatisticRequest;
 use App\Http\Requests\UpdateLinkStatisticRequest;
 use App\Repositories\LinkStatisticRepository;
-use Flash;
 use App\Http\Controllers\AppBaseController;
+use Illuminate\Http\Request;
+use Flash;
 use Response;
 
 class LinkStatisticController extends AppBaseController
@@ -24,12 +23,16 @@ class LinkStatisticController extends AppBaseController
     /**
      * Display a listing of the LinkStatistic.
      *
-     * @param LinkStatisticDataTable $linkStatisticDataTable
+     * @param Request $request
+     *
      * @return Response
      */
-    public function index(LinkStatisticDataTable $linkStatisticDataTable)
+    public function index(Request $request)
     {
-        return $linkStatisticDataTable->render('link_statistics.index');
+        $linkStatistics = $this->linkStatisticRepository->paginate(10);
+
+        return view('link_statistics.index')
+            ->with('linkStatistics', $linkStatistics);
     }
 
     /**
@@ -63,7 +66,7 @@ class LinkStatisticController extends AppBaseController
     /**
      * Display the specified LinkStatistic.
      *
-     * @param  int $id
+     * @param int $id
      *
      * @return Response
      */
@@ -83,7 +86,7 @@ class LinkStatisticController extends AppBaseController
     /**
      * Show the form for editing the specified LinkStatistic.
      *
-     * @param  int $id
+     * @param int $id
      *
      * @return Response
      */
@@ -103,7 +106,7 @@ class LinkStatisticController extends AppBaseController
     /**
      * Update the specified LinkStatistic in storage.
      *
-     * @param  int              $id
+     * @param int $id
      * @param UpdateLinkStatisticRequest $request
      *
      * @return Response
@@ -128,7 +131,9 @@ class LinkStatisticController extends AppBaseController
     /**
      * Remove the specified LinkStatistic from storage.
      *
-     * @param  int $id
+     * @param int $id
+     *
+     * @throws \Exception
      *
      * @return Response
      */
