@@ -51,7 +51,16 @@ class LinkAPIController extends AppBaseController
     abort(404);
   }
 
+  public function invalidate($url){
+    if ($url) {
+      $link = Link::where('masked', $url)->get()->last();
+      $link->valid = false;
+      $link->save();
+      return "Link invalidated";
+  }
+    return "empty url";
 
 
 
+}
 }

@@ -41,6 +41,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::post('l/create', [App\Http\Controllers\API\LinkAPIController::class, 'create']);
 Route::get('l/{url}', [App\Http\Controllers\API\LinkAPIController::class, 'redirect']);
+Route::put('l/{url}', [App\Http\Controllers\API\LinkAPIController::class, 'invalidate']);
 
 
 
