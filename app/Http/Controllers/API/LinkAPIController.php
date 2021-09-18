@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\UrlGenerator;
 use App\Models\Link; 
 use App\Helpers\TokenGenerator;
-
+use Carbon\Carbon; 
 /**
  * Class LinkController
  * @package App\Http\Controllers\API
@@ -30,10 +30,10 @@ class LinkAPIController extends AppBaseController
       $link->expiration_date = $request->expiration_date; 
       $link->password = $request->password; 
       $link->valid = true; 
-      $link->masked = $this->url->to('/')."/l/". TokenGenerator::getToken(5);
+      $link->masked = TokenGenerator::getToken(5);
       $link->save();
       $response['target'] = $link->original; 
-      $response['link'] = $link->masked; 
+      $response['link'] = $this->url->to('/') . "/l/" . $link->masked; 
       $response['valid'] = $link->valid; 
       if($link->expiration_date){
         $response['expiration_date'] = $link->expiration_date; 
@@ -43,6 +43,13 @@ class LinkAPIController extends AppBaseController
     return "empty url" ;
   }
 
+  public function redirect($url){
+    $link = Link::where('masked', $url)->get()->last();
+    if($link->valid && $link->expiration_date >= (Carbon::now())->toDateTimeString() ){
+      return $link->original; 
+    }
+    abort(404);
+  }
 
 
 

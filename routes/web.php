@@ -39,6 +39,8 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+Route::post('l/create', [App\Http\Controllers\API\LinkAPIController::class, 'create']);
+Route::get('l/{url}', [App\Http\Controllers\API\LinkAPIController::class, 'redirect']);
 
 
 
