@@ -30,7 +30,7 @@ put('l/{url}') anula un link
 Correr test
 ```
 cd linkctracker
-php artisan test
+php artisan test --testsuite=Feature
 ```
 El archivo del test está en 'tests/Features/APITest.php' 
 
